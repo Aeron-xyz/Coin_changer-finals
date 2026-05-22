@@ -1,7 +1,7 @@
 <x-app-layout title="Activity Logs">
     <div class="mb-6">
-        <h1 class="text-3xl font-extrabold text-white">Activity Logs</h1>
-        <p class="text-zinc-400">Login, logout, and system events</p>
+        <h1 class="page-title">Activity Logs</h1>
+        <p class="page-subtitle">Login, logout, and system events</p>
     </div>
 
     <div class="card overflow-x-auto">
@@ -21,11 +21,11 @@
                         <td>{{ $log->user?->fullname ?? '—' }}</td>
                         <td><span class="badge badge-info">{{ $log->action }}</span></td>
                         <td class="max-w-md">{{ $log->description }}</td>
-                        <td class="text-zinc-500">{{ $log->ip_address }}</td>
+                        <td class="text-powder-dark">{{ $log->ip_address }}</td>
                         <td>{{ $log->created_at->format('M d, Y H:i:s') }}</td>
                     </tr>
                 @empty
-                    <tr><td colspan="5" class="text-center text-zinc-500">No logs recorded.</td></tr>
+                    <tr><td colspan="5" class="py-8 text-center text-powder-dark">No logs recorded.</td></tr>
                 @endforelse
             </tbody>
         </table>

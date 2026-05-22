@@ -1,33 +1,65 @@
-<x-guest-layout>
-    <h2 class="mb-6 text-2xl font-bold text-white">Sign In</h2>
+<x-login-layout>
+    <div class="login-split">
+        <section class="login-split__form">
+            <div class="glass-card w-full max-w-[420px] animate-float">
+                <div class="mb-8 text-center">
+                    <div class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl border border-powder-dark bg-charcoal-elevated">
+                        <i class="fa-solid fa-gamepad text-xl text-powder-light"></i>
+                    </div>
+                    <p class="lgc-logo-text">
+                        Lukas <span class="lgc-logo-accent">Gaming Center</span>
+                    </p>
+                </div>
 
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+                <h1 class="font-display text-center text-3xl font-bold tracking-tight text-offwhite sm:text-[2rem]">Sign In</h1>
 
-    <form method="POST" action="{{ route('login') }}" class="space-y-5">
-        @csrf
+                <x-auth-session-status class="mt-6 text-center text-sm text-powder-light" :status="session('status')" />
 
-        <div>
-            <label for="username" class="form-label">Username</label>
-            <input id="username" name="username" type="text" value="{{ old('username') }}"
-                   class="form-input" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('username')" class="mt-2" />
-        </div>
+                <form method="POST" action="{{ route('login') }}" class="mt-8 space-y-4">
+                    @csrf
 
-        <div>
-            <label for="password" class="form-label">Password</label>
-            <input id="password" name="password" type="password"
-                   class="form-input" required autocomplete="current-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+                    <div>
+                        <input
+                            id="username"
+                            name="username"
+                            type="text"
+                            value="{{ old('username') }}"
+                            class="field-input"
+                            placeholder="Username"
+                            required
+                            autofocus
+                            autocomplete="username"
+                        />
+                        <x-input-error :messages="$errors->get('username')" class="mt-2 text-center text-sm text-red-400" />
+                    </div>
 
-        <div class="flex items-center">
-            <input id="remember_me" name="remember" type="checkbox"
-                   class="rounded border-zinc-600 bg-zinc-800 text-red-600 focus:ring-red-500" />
-            <label for="remember_me" class="ms-2 text-sm text-zinc-400">Remember me</label>
-        </div>
+                    <div>
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            class="field-input"
+                            placeholder="Password"
+                            required
+                            autocomplete="current-password"
+                        />
+                        <x-input-error :messages="$errors->get('password')" class="mt-2 text-center text-sm text-red-400" />
+                    </div>
 
-        <button type="submit" class="btn-primary w-full py-3 text-base font-bold">
-            Sign In
-        </button>
-    </form>
-</x-guest-layout>
+                    <button type="submit" class="btn-signin">Sign In</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="login-split__visual" aria-hidden="true">
+            <img
+                src="{{ asset('images/lukas-gaming-hero.png') }}"
+                alt=""
+                class="login-split__hero-img"
+                loading="eager"
+            />
+            <div class="login-split__overlay login-split__overlay--hero"></div>
+            <div class="circuit-pattern absolute inset-0 opacity-30"></div>
+        </section>
+    </div>
+</x-login-layout>

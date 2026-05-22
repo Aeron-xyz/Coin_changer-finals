@@ -1,7 +1,7 @@
 <x-app-layout title="My Transactions">
     <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-            <h1 class="text-3xl font-extrabold text-white">My Transaction History</h1>
+            <h1 class="page-title">My Transaction History</h1>
         </div>
         <a href="{{ route('user.transactions.create') }}" class="btn-primary">New Transaction</a>
     </div>
@@ -33,11 +33,11 @@
                         <td>{{ $tx->coin_5 }}</td>
                         <td>{{ $tx->coin_10 }}</td>
                         <td>{{ $tx->coin_20 }}</td>
-                        <td class="font-bold text-red-400">₱{{ number_format($tx->total_amount) }}</td>
+                        <td class="font-bold text-powder-light">₱{{ number_format($tx->total_amount) }}</td>
                         <td>{{ $tx->created_at->format('M d, Y H:i') }}</td>
                     </tr>
                 @empty
-                    <tr><td colspan="8" class="text-center text-zinc-500">No transactions yet.</td></tr>
+                    <tr><td colspan="8" class="py-8 text-center text-powder-dark">No transactions yet.</td></tr>
                 @endforelse
             </tbody>
         </table>
